@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - claude/anime-portfolio-site-5aZps
   workflow_dispatch:
 
 permissions:
