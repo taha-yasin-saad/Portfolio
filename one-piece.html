@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Taha Kommah — Senior Full Stack Engineer. A One Piece-inspired pirate portfolio: 8+ years charting the Grand Line of scalable web platforms." />
+  <meta name="author" content="Taha Kommah" />
+  <meta name="theme-color" content="#0a2e47" />
+
+  <meta property="og:title" content="Taha Kommah — The Full-Stack Pirate" />
+  <meta property="og:description" content="Senior Full Stack Engineer sailing the Grand Line of scalable systems." />
+  <meta property="og:type" content="website" />
+
+  <title>Taha Kommah · The Full-Stack Pirate</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Cinzel:wght@500;700;900&family=Special+Elite&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/one-piece.css" />
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🏴‍☠️&lt;/text&gt;&lt;/svg&gt;" />
+</head>
+<body>
+
+  <!-- ===== Loading screen ===== -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <div class="compass">
+        <div class="compass__face">
+          <span class="compass__pt compass__pt--n">N</span>
+          <span class="compass__pt compass__pt--e">E</span>
+          <span class="compass__pt compass__pt--s">S</span>
+          <span class="compass__pt compass__pt--w">W</span>
+          <div class="compass__needle"></div>
+        </div>
+      </div>
+      <p class="loader__title">Weighing Anchor</p>
+      <p class="loader__jp">海賊 · SETTING SAIL</p>
+      <div class="loader__rope"><span id="loaderBar"></span></div>
+      <p class="loader__pct" id="loaderPct">0%</p>
+    </div>
+  </div>
+
+  <!-- ===== Ocean background ===== -->
+  <div class="sky" aria-hidden="true"></div>
+  <div class="clouds" aria-hidden="true">
+    <span class="cloud cloud--1"></span>
+    <span class="cloud cloud--2"></span>
+    <span class="cloud cloud--3"></span>
+    <span class="cloud cloud--4"></span>
+  </div>
+  <div class="sun" aria-hidden="true"></div>
+  <canvas class="coins" id="coins" aria-hidden="true"></canvas>
+
+  <!-- ===== Custom cursor ===== -->
+  <div class="cursor" id="cursor" aria-hidden="true">✛</div>
+
+  <!-- ===== Scroll progress ===== -->
+  <div class="voyage-bar" id="voyageBar" aria-hidden="true">
+    <span class="voyage-bar__ship">⛵</span>
+  </div>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="brand" data-cursor>
+      <svg class="brand__roger" viewBox="0 0 100 100" aria-hidden="true">
+        <g stroke="#3a2a16" stroke-width="3" stroke-linecap="round">
+          <line x1="22" y1="74" x2="78" y2="30" />
+          <line x1="78" y1="74" x2="22" y2="30" />
+          <circle cx="18" cy="78" r="6" fill="#f4e4c1"/><circle cx="82" cy="26" r="6" fill="#f4e4c1"/>
+          <circle cx="82" cy="78" r="6" fill="#f4e4c1"/><circle cx="18" cy="26" r="6" fill="#f4e4c1"/>
+        </g>
+        <circle cx="50" cy="48" r="24" fill="#f4e4c1" stroke="#3a2a16" stroke-width="3"/>
+        <ellipse cx="41" cy="45" rx="6" ry="7" fill="#3a2a16"/>
+        <ellipse cx="59" cy="45" rx="6" ry="7" fill="#3a2a16"/>
+        <path d="M44 60 h12" stroke="#3a2a16" stroke-width="3" stroke-linecap="round"/>
+        <path d="M30 34 Q50 20 70 34" fill="none" stroke="#c0392b" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__text">TAHA <i>KOMMAH</i></span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about"    data-cursor>The Captain</a>
+      <a href="#skills"   data-cursor>Powers</a>
+      <a href="#voyage"   data-cursor>Voyage</a>
+      <a href="#treasure" data-cursor>Treasure</a>
+      <a href="#contact"  data-cursor>Den Den Mushi</a>
+      <a href="index.html" class="nav__alt" data-cursor>⚡ Cyber Edition</a>
+      <a href="assets/Taha_Kommah_Resume.pdf" class="nav__cv" download data-cursor>The Log Book ↧</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="ship" aria-hidden="true">
+        <svg viewBox="0 0 220 150">
+          <path d="M30 110 L190 110 L170 135 L50 135 Z" fill="#6b4226" stroke="#3d2614" stroke-width="3"/>
+          <rect x="106" y="30" width="6" height="82" fill="#3d2614"/>
+          <path d="M112 36 Q165 52 150 92 L112 92 Z" fill="#f4e4c1" stroke="#3d2614" stroke-width="2.5"/>
+          <path d="M106 44 Q58 58 70 90 L106 90 Z" fill="#efe0b8" stroke="#3d2614" stroke-width="2.5"/>
+          <path d="M109 14 l16 8 -16 8 Z" fill="#c0392b"/>
+        </svg>
+      </div>
+
+      <div class="hero__inner">
+        <!-- Wanted poster -->
+        <figure class="poster" id="poster">
+          <span class="poster__pin"></span>
+          <p class="poster__top">WANTED</p>
+          <div class="poster__photo">
+            <div class="straw-hat" aria-hidden="true">
+              <svg viewBox="0 0 220 140">
+                <ellipse cx="110" cy="104" rx="104" ry="30" fill="#e8c87a" stroke="#a9802f" stroke-width="4"/>
+                <ellipse cx="110" cy="100" rx="104" ry="26" fill="#f0d699"/>
+                <path d="M58 100 Q60 34 110 28 Q160 34 162 100 Z" fill="#efd393" stroke="#a9802f" stroke-width="4"/>
+                <path d="M58 98 Q110 116 162 98 L162 82 Q110 100 58 82 Z" fill="#c0392b" stroke="#8e2a20" stroke-width="2"/>
+              </svg>
+            </div>
+            <span class="poster__monogram">TK</span>
+            <span class="poster__photo-tag">PORTRAIT</span>
+          </div>
+          <p class="poster__deadalive">DEAD OR ALIVE</p>
+          <h1 class="poster__name">TAHA KOMMAH</h1>
+          <p class="poster__epithet">“ The Full-Stack Pirate ”</p>
+          <div class="poster__bounty">
+            <span class="berry">฿</span>
+            <span class="bounty-num" id="bounty" data-count="8000000000">0</span>
+          </div>
+          <p class="poster__marine">
+            <span>★</span> MARINE — GRAND LINE BUREAU OF ENGINEERING <span>★</span>
+          </p>
+        </figure>
+
+        <!-- Hero copy -->
+        <div class="hero__text">
+          <p class="hero__kicker">A Tale of the Grand Line</p>
+          <h2 class="hero__headline">
+            The man who will become the<br />
+            <em>Pirate King of Full-Stack.</em>
+          </h2>
+          <p class="hero__desc">
+            I'm <strong>Taha Kommah</strong> — a Senior Full Stack Engineer with
+            <strong>8+ years</strong> charting the Grand Line of scalable web
+            platforms. RESTful APIs, microservices and distributed systems that
+            weather any storm and never sink.
+          </p>
+          <div class="hero__cta">
+            <a href="#treasure" class="btn btn--gold" data-cursor>Hunt the Treasure</a>
+            <a href="#contact" class="btn btn--wood" data-cursor>Send a Den Den Mushi</a>
+          </div>
+          <div class="hero__crew">
+            <a href="https://github.com/taha-yasin-saad" target="_blank" rel="noopener" data-cursor>GitHub</a>
+            <span>·</span>
+            <a href="https://www.linkedin.com/in/taha-kommah-a0085a277" target="_blank" rel="noopener" data-cursor>LinkedIn</a>
+            <span>·</span>
+            <a href="mailto:taha.yasin.saad@gmail.com" data-cursor>Email</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-hint" data-cursor>
+        <span>CHART A COURSE</span>
+        <span class="scroll-hint__arrow">⚓</span>
+      </a>
+    </section>
+
+    <!-- wave divider -->
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,64 C240,120 480,8 720,52 C960,96 1200,16 1440,60 L1440,120 L0,120 Z"></path>
+      </svg>
+    </div>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats" aria-label="Pirate statistics">
+      <div class="stats__grid">
+        <div class="pstat reveal">
+          <span class="pstat__num" data-count="8" data-suffix="+">0</span>
+          <span class="pstat__label">Years on the Grand Line</span>
+        </div>
+        <div class="pstat reveal">
+          <span class="pstat__num" data-count="100" data-suffix="+">0</span>
+          <span class="pstat__label">Islands Charted on GitHub</span>
+        </div>
+        <div class="pstat reveal">
+          <span class="pstat__num" data-count="10" data-suffix="K+">0</span>
+          <span class="pstat__label">Souls Aboard the Ship</span>
+        </div>
+        <div class="pstat reveal">
+          <span class="pstat__num" data-count="99.9" data-suffix="%">0</span>
+          <span class="pstat__label">Voyages Without a Wreck</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <div class="section__head reveal">
+        <span class="section__ornament">⚓ ✦ ⚓</span>
+        <h2 class="section__title">The Captain's Log</h2>
+        <p class="section__sub">Chapter One — Who Sails This Ship</p>
+      </div>
+
+      <div class="about">
+        <article class="scroll-panel reveal">
+          <p class="about__lead">
+            Every great voyage needs a captain who knows the engine room as well
+            as the helm.
+          </p>
+          <p>
+            I'm <strong>Taha Kommah</strong>, sailing out of <strong>Abu Dhabi,
+            UAE</strong>. For over <strong>8 years</strong> I've navigated the
+            Grand Line of software — building scalable platforms across
+            <em>sports analytics</em>, <em>e-commerce</em> and
+            <em>event management</em> that stay fast while thousands of users
+            storm the decks.
+          </p>
+          <p>
+            My treasure lies in the backend: RESTful APIs, microservice fleets and
+            distributed systems forged with Node.js, PHP and Python. I've scaled
+            crews to <strong>10k+ concurrent users</strong> and kept ships afloat
+            at <strong>99.9% uptime</strong> — performance tuning, caching strategy
+            and clean cloud deployment are the wind in my sails.
+          </p>
+          <div class="about__flags">
+            <span data-cursor>⚓ Abu Dhabi, UAE</span>
+            <span data-cursor>📜 M.IT — AI &amp; Systems</span>
+            <span data-cursor>🗣 Arabic · English · French</span>
+            <span data-cursor>🧭 Open to new voyages</span>
+          </div>
+        </article>
+
+        <aside class="logpose reveal">
+          <div class="logpose__head">CAPTAIN'S CARD</div>
+          <div class="logpose__orb">
+            <div class="logpose__ring"></div>
+            <span>🧭</span>
+          </div>
+          <ul class="logpose__list">
+            <li><b>Title</b><span>Senior Full Stack Engineer</span></li>
+            <li><b>Home Port</b><span>Abu Dhabi, UAE</span></li>
+            <li><b>Specialty</b><span>Backend · APIs · Scale</span></li>
+            <li><b>Schooling</b><span>Master of IT — Alexandria Univ.</span></li>
+            <li><b>Status</b><span class="ready">Ready to set sail</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section section--sea" id="skills">
+      <div class="section__head reveal">
+        <span class="section__ornament">☠ ✦ ☠</span>
+        <h2 class="section__title section__title--light">Devil Fruit Arsenal</h2>
+        <p class="section__sub section__sub--light">Chapter Two — Powers &amp; Abilities</p>
+      </div>
+
+      <div class="fruits">
+        <article class="fruit reveal">
+          <span class="fruit__icon">📜</span>
+          <h3>Ancient Tongues</h3>
+          <p class="fruit__type">Language Mastery</p>
+          <div class="berry-tags">
+            <span>Python</span><span>PHP</span><span>JavaScript</span>
+            <span>TypeScript</span><span>SQL</span>
+          </div>
+        </article>
+
+        <article class="fruit reveal">
+          <span class="fruit__icon">⚙️</span>
+          <h3>The Engine Room</h3>
+          <p class="fruit__type">Backend Power</p>
+          <div class="berry-tags">
+            <span>Node.js</span><span>Express.js</span><span>NestJS</span>
+            <span>Django</span><span>Laravel</span><span>REST APIs</span>
+          </div>
+        </article>
+
+        <article class="fruit reveal">
+          <span class="fruit__icon">🧭</span>
+          <h3>The Helm</h3>
+          <p class="fruit__type">Frontend Craft</p>
+          <div class="berry-tags">
+            <span>React</span><span>Vue.js</span><span>Tailwind CSS</span>
+            <span>Sass / Less</span><span>Bootstrap</span><span>Responsive UI</span>
+          </div>
+        </article>
+
+        <article class="fruit reveal">
+          <span class="fruit__icon">🛢️</span>
+          <h3>The Cargo Hold</h3>
+          <p class="fruit__type">Data &amp; Caching</p>
+          <div class="berry-tags">
+            <span>MySQL</span><span>PostgreSQL</span><span>MongoDB</span>
+            <span>Redis</span>
+          </div>
+        </article>
+
+        <article class="fruit reveal">
+          <span class="fruit__icon">👁️</span>
+          <h3>Observation Haki</h3>
+          <p class="fruit__type">AI &amp; Machine Learning</p>
+          <div class="berry-tags">
+            <span>NumPy</span><span>Pandas</span><span>Scikit-learn</span>
+            <span>TensorFlow</span><span>ML Deployment</span>
+          </div>
+        </article>
+
+        <article class="fruit reveal">
+          <span class="fruit__icon">🗺️</span>
+          <h3>Navigator's Charts</h3>
+          <p class="fruit__type">Cloud &amp; DevOps</p>
+          <div class="berry-tags">
+            <span>AWS</span><span>GCP</span><span>Docker</span>
+            <span>Kubernetes</span><span>Jenkins</span><span>CI/CD</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="haki reveal">
+        <h3 class="haki__title">⚔ Haki Mastery</h3>
+        <div class="haki__grid">
+          <div class="haki__bar">
+            <div class="haki__top"><span>Armament — Backend &amp; APIs</span><span>96%</span></div>
+            <div class="haki__track"><i style="--w:96%"></i></div>
+          </div>
+          <div class="haki__bar">
+            <div class="haki__top"><span>Conqueror's — System Design</span><span>92%</span></div>
+            <div class="haki__track"><i style="--w:92%"></i></div>
+          </div>
+          <div class="haki__bar">
+            <div class="haki__top"><span>Observation — Performance</span><span>94%</span></div>
+            <div class="haki__track"><i style="--w:94%"></i></div>
+          </div>
+          <div class="haki__bar">
+            <div class="haki__top"><span>Navigation — Cloud &amp; DevOps</span><span>88%</span></div>
+            <div class="haki__track"><i style="--w:88%"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VOYAGE / EXPERIENCE ===== -->
+    <section class="section" id="voyage">
+      <div class="section__head reveal">
+        <span class="section__ornament">⚓ ✦ ⚓</span>
+        <h2 class="section__title">The Grand Line Voyage</h2>
+        <p class="section__sub">Chapter Three — Islands Conquered</p>
+      </div>
+
+      <div class="route">
+        <div class="route__line"></div>
+
+        <article class="island reveal">
+          <div class="island__marker">⚑</div>
+          <div class="island__card" data-cursor>
+            <div class="island__bar">
+              <span class="island__no">ISLAND 06 · CURRENT PORT</span>
+              <span class="island__date">Dec 2021 — Present</span>
+            </div>
+            <h3 class="island__role">Senior Full Stack Engineer</h3>
+            <p class="island__crew">RotoBaller <i>· New York</i></p>
+            <ul>
+              <li>Built a scalable NFL ranking platform for thousands of fantasy
+                sailors — <b>+60% engagement</b>.</li>
+              <li>Cut API latency <b>40%</b> with SQL tuning, Redis caching and
+                refactored ranking services.</li>
+              <li>Shipped real-time REST APIs for live rankings and sports data.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="island reveal">
+          <div class="island__marker">⚑</div>
+          <div class="island__card" data-cursor>
+            <div class="island__bar">
+              <span class="island__no">ISLAND 05</span>
+              <span class="island__date">Jan 2023 — Dec 2024</span>
+            </div>
+            <h3 class="island__role">Senior Full Stack Engineer</h3>
+            <p class="island__crew">Menuhat <i>· Riyadh</i></p>
+            <ul>
+              <li>Built backend services for a food-ordering platform handling
+                <b>10k+ concurrent users</b>.</li>
+              <li>Reduced page load times <b>70%</b> via query tuning, caching and
+                AWS infrastructure work.</li>
+              <li>Shipped Node.js + Docker microservices and analytics dashboards
+                (<b>-30% support queries</b>).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="island reveal">
+          <div class="island__marker">⚑</div>
+          <div class="island__card" data-cursor>
+            <div class="island__bar">
+              <span class="island__no">ISLAND 04</span>
+              <span class="island__date">Feb 2022 — Jan 2023</span>
+            </div>
+            <h3 class="island__role">Senior Full Stack Engineer</h3>
+            <p class="island__crew">Klik <i>· North Carolina</i></p>
+            <ul>
+              <li>Developed a scalable event-management platform for ticket browsing
+                and booking.</li>
+              <li>Improved booking performance <b>25%</b> via API and database
+                optimization.</li>
+              <li>Integrated secure payment gateways — <b>+20% successful
+                transactions</b>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="island reveal">
+          <div class="island__marker">⚑</div>
+          <div class="island__card" data-cursor>
+            <div class="island__bar">
+              <span class="island__no">ISLAND 03</span>
+              <span class="island__date">Oct 2021 — Feb 2022</span>
+            </div>
+            <h3 class="island__role">Senior Full Stack Engineer</h3>
+            <p class="island__crew">The Cube <i>· Athens</i></p>
+            <ul>
+              <li>Designed and delivered the <em>Recruitscape</em> recruitment
+                platform.</li>
+              <li>Automated hiring workflows — <b>-35% manual HR operations</b>.</li>
+              <li>Built WebRTC + Firebase video interviews at <b>99.9% uptime</b>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="island reveal">
+          <div class="island__marker">⚑</div>
+          <div class="island__card" data-cursor>
+            <div class="island__bar">
+              <span class="island__no">ISLAND 02</span>
+              <span class="island__date">Jan 2021 — Oct 2021</span>
+            </div>
+            <h3 class="island__role">Mid-Senior Full Stack Engineer</h3>
+            <p class="island__crew">For All <i>· Riyadh</i></p>
+            <ul>
+              <li>Architected backend infrastructure for a multi-service super app.</li>
+              <li>Improved API response times <b>30%</b> via caching and query
+                optimization.</li>
+              <li>Integrated secure payments — <b>+50% transaction success</b>,
+                99.8% uptime.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="island reveal">
+          <div class="island__marker">⚓</div>
+          <div class="island__card" data-cursor>
+            <div class="island__bar">
+              <span class="island__no">ISLAND 01 · SET SAIL</span>
+              <span class="island__date">Aug 2017 — Jan 2021</span>
+            </div>
+            <h3 class="island__role">Full Stack Engineer</h3>
+            <p class="island__crew">Malexs <i>· Alexandria</i></p>
+            <ul>
+              <li>Built web &amp; mobile apps for healthcare, e-commerce and service
+                industries.</li>
+              <li>Delivered RESTful APIs and cross-platform apps with Ionic &amp;
+                Flutter.</li>
+              <li>Shipped production systems: Medical One Clinic, HNAcare, Fosol,
+                Boxaqra, Mahal &amp; more.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== TREASURE / PROJECTS ===== -->
+    <section class="section section--sea" id="treasure">
+      <div class="section__head reveal">
+        <span class="section__ornament">☠ ✦ ☠</span>
+        <h2 class="section__title section__title--light">The Treasure Vault</h2>
+        <p class="section__sub section__sub--light">Chapter Four — Plunder from the Grand Line</p>
+      </div>
+
+      <div class="treasures">
+        <a class="chest reveal" href="https://github.com/taha-yasin-saad/nestjs-redis-microservices" target="_blank" rel="noopener" data-cursor>
+          <div class="chest__lid"><span class="chest__rarity rarity--gold">LEGENDARY</span></div>
+          <div class="chest__body">
+            <h3 class="chest__name">NestJS Redis Microservices</h3>
+            <p class="chest__desc">A fleet of decoupled microservices built with
+              NestJS and Redis message-brokering.</p>
+            <div class="chest__loot"><span>TypeScript</span><span>Redis</span><span>NestJS</span></div>
+          </div>
+        </a>
+
+        <a class="chest reveal" href="https://github.com/taha-yasin-saad/jeddah-traffic-dataset" target="_blank" rel="noopener" data-cursor>
+          <div class="chest__lid"><span class="chest__rarity rarity--gold">LEGENDARY</span></div>
+          <div class="chest__body">
+            <h3 class="chest__name">Jeddah Traffic ML Dashboard</h3>
+            <p class="chest__desc">2024 traffic dataset calibrated to GASTAT &amp;
+              KAPSARC, with a Streamlit ML dashboard.</p>
+            <div class="chest__loot"><span>Python</span><span>Streamlit</span><span>ML</span></div>
+          </div>
+        </a>
+
+        <a class="chest reveal" href="https://github.com/taha-yasin-saad/facial-recognition-attendance" target="_blank" rel="noopener" data-cursor>
+          <div class="chest__lid"><span class="chest__rarity rarity--violet">EPIC</span></div>
+          <div class="chest__body">
+            <h3 class="chest__name">Facial Recognition Attendance</h3>
+            <p class="chest__desc">A computer-vision crew log — identifies faces from
+              a camera feed and records presence.</p>
+            <div class="chest__loot"><span>Python</span><span>OpenCV</span><span>AI</span></div>
+          </div>
+        </a>
+
+        <a class="chest reveal" href="https://github.com/taha-yasin-saad/Fraud-Detection-Advanced-Data-Mining" target="_blank" rel="noopener" data-cursor>
+          <div class="chest__lid"><span class="chest__rarity rarity--violet">EPIC</span></div>
+          <div class="chest__body">
+            <h3 class="chest__name">Fraud Detection — Data Mining</h3>
+            <p class="chest__desc">Advanced data-mining models that hunt financial
+              fraud across imbalanced seas of data.</p>
+            <div class="chest__loot"><span>Python</span><span>Pandas</span><span>ML</span></div>
+          </div>
+        </a>
+
+        <a class="chest reveal" href="https://github.com/taha-yasin-saad/renkings-upgrade-ai" target="_blank" rel="noopener" data-cursor>
+          <div class="chest__lid"><span class="chest__rarity rarity--blue">RARE</span></div>
+          <div class="chest__body">
+            <h3 class="chest__name">Rankings Engine — AI Upgrade</h3>
+            <p class="chest__desc">An AI-enhanced upgrade of a sports ranking engine —
+              smarter scoring, faster compute.</p>
+            <div class="chest__loot"><span>JavaScript</span><span>AI</span><span>Sports</span></div>
+          </div>
+        </a>
+
+        <a class="chest reveal" href="https://github.com/taha-yasin-saad/SmartBrain" target="_blank" rel="noopener" data-cursor>
+          <div class="chest__lid"><span class="chest__rarity rarity--blue">RARE</span></div>
+          <div class="chest__body">
+            <h3 class="chest__name">SmartBrain</h3>
+            <p class="chest__desc">A React app that spots faces inside any image via a
+              machine-learning vision API.</p>
+            <div class="chest__loot"><span>React</span><span>API</span><span>UI</span></div>
+          </div>
+        </a>
+      </div>
+
+      <a class="treasures__all" href="https://github.com/taha-yasin-saad" target="_blank" rel="noopener" data-cursor>
+        🗺️ Unfurl the full map — 100+ repositories on GitHub
+      </a>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact">
+      <div class="section__head reveal">
+        <span class="section__ornament">⚓ ✦ ⚓</span>
+        <h2 class="section__title">Send a Den Den Mushi</h2>
+        <p class="section__sub">Final Chapter — Call the Captain</p>
+      </div>
+
+      <div class="contact reveal">
+        <div class="contact__snail" aria-hidden="true">
+          <svg viewBox="0 0 200 170">
+            <ellipse cx="100" cy="150" rx="78" ry="13" fill="rgba(0,0,0,.18)"/>
+            <path d="M40 150 Q30 96 96 100 L120 150 Z" fill="#7fc8a9" stroke="#3a2a16" stroke-width="4"/>
+            <circle cx="118" cy="92" r="56" fill="#f4c542" stroke="#3a2a16" stroke-width="5"/>
+            <circle cx="118" cy="92" r="40" fill="none" stroke="#c0392b" stroke-width="6"/>
+            <circle cx="118" cy="92" r="22" fill="none" stroke="#3a2a16" stroke-width="5"/>
+            <circle cx="118" cy="92" r="7" fill="#3a2a16"/>
+            <path d="M40 150 Q26 150 24 132" fill="none" stroke="#3a2a16" stroke-width="4" stroke-linecap="round"/>
+            <line class="snail-eye" x1="50" y1="116" x2="42" y2="74" stroke="#3a2a16" stroke-width="5" stroke-linecap="round"/>
+            <line class="snail-eye" x1="70" y1="114" x2="78" y2="72" stroke="#3a2a16" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="42" cy="70" r="9" fill="#f4e4c1" stroke="#3a2a16" stroke-width="3"/>
+            <circle cx="78" cy="68" r="9" fill="#f4e4c1" stroke="#3a2a16" stroke-width="3"/>
+            <circle cx="42" cy="70" r="3.5" fill="#3a2a16"/>
+            <circle cx="78" cy="68" r="3.5" fill="#3a2a16"/>
+            <path d="M52 132 Q60 140 70 132" fill="none" stroke="#3a2a16" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <p class="contact__snail-cap">Purupurupuru… 📞</p>
+        </div>
+
+        <div class="contact__body">
+          <h3 class="contact__title">Ready to recruit a new crew member?</h3>
+          <p class="contact__sub">
+            Whether it's a full-time berth, a contract voyage, or just a good
+            engineering yarn — ring the Den Den Mushi and I'll answer.
+          </p>
+          <div class="contact__links">
+            <a href="mailto:taha.yasin.saad@gmail.com" data-cursor>
+              <span class="contact__ico">✉</span>
+              <span><b>Message in a Bottle</b>taha.yasin.saad@gmail.com</span>
+            </a>
+            <a href="tel:+971547380091" data-cursor>
+              <span class="contact__ico">📞</span>
+              <span><b>Den Den Mushi</b>+971 54 738 0091</span>
+            </a>
+            <a href="https://www.linkedin.com/in/taha-kommah-a0085a277" target="_blank" rel="noopener" data-cursor>
+              <span class="contact__ico">in</span>
+              <span><b>Marine Records</b>linkedin.com/in/taha-kommah</span>
+            </a>
+            <a href="https://github.com/taha-yasin-saad" target="_blank" rel="noopener" data-cursor>
+              <span class="contact__ico">☠</span>
+              <span><b>Treasure Map</b>github.com/taha-yasin-saad</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__deck">
+      <p class="footer__quote">“ Wealth, fame, power — clean architecture that scales. ”</p>
+      <p class="footer__brand">TAHA KOMMAH · THE FULL-STACK PIRATE</p>
+      <p class="footer__copy">© <span id="year"></span> · Charted with code &amp; a love for One Piece ·
+        <a href="index.html" data-cursor>Switch to Cyber Edition ⚡</a>
+      </p>
+    </div>
+  </footer>
+
+  <button class="totop" id="toTop" aria-label="Back to top" data-cursor>⚓</button>
+
+  <script src="assets/js/one-piece.js"></script>
+</body>
+</html>
