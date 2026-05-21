@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Taha Kommah — Senior Full Stack Engineer. 8+ years building scalable web platforms, RESTful APIs, microservices and high-performance backend systems." />
+  <meta name="author" content="Taha Kommah" />
+  <meta name="theme-color" content="#0a0a14" />
+
+  <meta property="og:title" content="Taha Kommah — Full Stack Engineer" />
+  <meta property="og:description" content="Senior Full Stack Engineer crafting scalable, high-performance web platforms." />
+  <meta property="og:type" content="website" />
+
+  <title>Taha Kommah · Full Stack Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;⚔️&lt;/text&gt;&lt;/svg&gt;" />
+</head>
+<body>
+
+  <!-- ===== Loading screen ===== -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <div class="loader__ring"></div>
+      <div class="loader__core">TK</div>
+      <div class="loader__jp">ロード中</div>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <div class="loader__pct" id="loaderPct">0%</div>
+    </div>
+  </div>
+
+  <!-- ===== Animated background layers ===== -->
+  <canvas class="petals" id="petals" aria-hidden="true"></canvas>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- ===== Custom cursor ===== -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ===== Scroll progress ===== -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav__brand" data-cursor>
+      <span class="nav__brand-mark">⚔</span>
+      <span class="nav__brand-text">TAHA<i>.</i>K</span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about"      data-cursor><b>01</b> About</a>
+      <a href="#skills"     data-cursor><b>02</b> Skills</a>
+      <a href="#experience" data-cursor><b>03</b> Journey</a>
+      <a href="#projects"   data-cursor><b>04</b> Projects</a>
+      <a href="#contact"    data-cursor><b>05</b> Contact</a>
+      <a href="assets/Taha_Kommah_Resume.pdf" class="nav__cv" download data-cursor>Resume ↗</a>
+    </nav>
+    <button class="nav__burger" id="navBurger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="hero__tag reveal">
+            <span class="dot"></span> Available for new missions
+          </p>
+          <p class="hero__jp reveal">フルスタックエンジニア</p>
+          <h1 class="hero__name">
+            <span class="glitch" data-text="TAHA">TAHA</span>
+            <span class="glitch glitch--accent" data-text="KOMMAH">KOMMAH</span>
+          </h1>
+          <h2 class="hero__role reveal">
+            <span class="hero__role-static">I build</span>
+            <span class="hero__role-type" id="roleType"></span>
+            <span class="hero__caret">▌</span>
+          </h2>
+          <p class="hero__desc reveal">
+            Senior Full Stack Engineer with <strong>8+ years</strong> forging scalable
+            web platforms and high-performance backend systems — RESTful APIs,
+            microservices, and distributed systems that survive real traffic.
+          </p>
+          <div class="hero__cta reveal">
+            <a href="#projects" class="btn btn--primary" data-cursor>
+              <span>View Projects</span>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="btn btn--ghost" data-cursor>
+              <span>Get in Touch</span>
+            </a>
+          </div>
+          <div class="hero__socials reveal">
+            <a href="https://github.com/taha-yasin-saad" target="_blank" rel="noopener" data-cursor aria-label="GitHub">GitHub</a>
+            <a href="https://www.linkedin.com/in/taha-kommah-a0085a277" target="_blank" rel="noopener" data-cursor aria-label="LinkedIn">LinkedIn</a>
+            <a href="mailto:taha.yasin.saad@gmail.com" data-cursor aria-label="Email">Email</a>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="avatar">
+            <div class="avatar__ring avatar__ring--1"></div>
+            <div class="avatar__ring avatar__ring--2"></div>
+            <div class="avatar__ring avatar__ring--3"></div>
+            <div class="avatar__core">
+              <span class="avatar__initials">TK</span>
+              <span class="avatar__jp">開発者</span>
+            </div>
+            <div class="avatar__chip avatar__chip--tl">Node.js</div>
+            <div class="avatar__chip avatar__chip--tr">Python</div>
+            <div class="avatar__chip avatar__chip--bl">React</div>
+            <div class="avatar__chip avatar__chip--br">AWS</div>
+          </div>
+          <div class="hero__hud">
+            <span>SYS: ONLINE</span>
+            <span>LV. 99</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="hero__scroll" data-cursor aria-label="Scroll down">
+        <span>SCROLL</span>
+        <span class="hero__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats" aria-label="Key statistics">
+      <div class="stats__grid">
+        <div class="stat reveal">
+          <div class="stat__num" data-count="8" data-suffix="+">0</div>
+          <div class="stat__label">Years of Experience</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num" data-count="100" data-suffix="+">0</div>
+          <div class="stat__label">GitHub Repositories</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num" data-count="10" data-suffix="K+">0</div>
+          <div class="stat__label">Concurrent Users Served</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num" data-count="99.9" data-suffix="%">0</div>
+          <div class="stat__label">Production Uptime</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <div class="section__head reveal">
+        <span class="section__jp">私について</span>
+        <h2 class="section__title"><span class="section__no">01</span> About</h2>
+        <div class="section__line"></div>
+      </div>
+
+      <div class="about">
+        <div class="about__text reveal">
+          <p class="about__lead">
+            I'm <strong>Taha Kommah</strong> — a Senior Full Stack Engineer based in
+            Abu Dhabi, UAE.
+          </p>
+          <p>
+            For over <strong>8 years</strong> I've been designing and shipping scalable
+            web platforms across <em>sports analytics</em>, <em>e-commerce</em> and
+            <em>event management</em> — the kind of systems that have to stay fast and
+            online while thousands of people hammer them at once.
+          </p>
+          <p>
+            My craft lives in the backend: RESTful APIs, microservice architectures and
+            distributed systems built with Node.js, PHP and Python. I obsess over
+            performance optimization, caching strategies and clean cloud deployments —
+            and I've got the track record to back it up: applications scaled to
+            <strong>10k+ concurrent users</strong> with <strong>99.9% uptime</strong>.
+          </p>
+          <div class="about__chips">
+            <span data-cursor>📍 Abu Dhabi, UAE</span>
+            <span data-cursor>🎓 M.IT — AI &amp; Systems</span>
+            <span data-cursor>🗣 AR · EN · FR</span>
+            <span data-cursor>⚡ Open to opportunities</span>
+          </div>
+        </div>
+
+        <aside class="about__card reveal">
+          <div class="about__card-head">
+            <span>PILOT PROFILE</span>
+            <span class="about__card-jp">経歴</span>
+          </div>
+          <ul class="about__stats">
+            <li><b>Role</b><span>Senior Full Stack Engineer</span></li>
+            <li><b>Base</b><span>Abu Dhabi, UAE</span></li>
+            <li><b>Focus</b><span>Backend · APIs · Scale</span></li>
+            <li><b>Education</b><span>Master of IT — Alexandria Univ.</span></li>
+            <li><b>Degree</b><span>B.Eng — Alexandria Univ.</span></li>
+            <li><b>Status</b><span class="online">● Online &amp; hiring-ready</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills">
+      <div class="section__head reveal">
+        <span class="section__jp">スキル</span>
+        <h2 class="section__title"><span class="section__no">02</span> Arsenal</h2>
+        <div class="section__line"></div>
+      </div>
+
+      <div class="skills">
+        <article class="skill-card reveal">
+          <header><i class="skill-card__icon">{ }</i><h3>Languages</h3></header>
+          <div class="tags">
+            <span>Python</span><span>PHP</span><span>JavaScript</span>
+            <span>TypeScript</span><span>SQL</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <header><i class="skill-card__icon">⚙</i><h3>Backend</h3></header>
+          <div class="tags">
+            <span>Node.js</span><span>Express.js</span><span>NestJS</span>
+            <span>Django</span><span>Laravel</span><span>REST APIs</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <header><i class="skill-card__icon">▣</i><h3>Frontend</h3></header>
+          <div class="tags">
+            <span>React</span><span>Vue.js</span><span>Tailwind CSS</span>
+            <span>Sass / Less</span><span>Bootstrap</span><span>Responsive UI</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <header><i class="skill-card__icon">◈</i><h3>Data &amp; Cache</h3></header>
+          <div class="tags">
+            <span>MySQL</span><span>PostgreSQL</span><span>MongoDB</span>
+            <span>Redis</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <header><i class="skill-card__icon">✦</i><h3>AI / ML</h3></header>
+          <div class="tags">
+            <span>NumPy</span><span>Pandas</span><span>Scikit-learn</span>
+            <span>TensorFlow</span><span>ML Deployment</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <header><i class="skill-card__icon">☁</i><h3>Cloud &amp; DevOps</h3></header>
+          <div class="tags">
+            <span>AWS</span><span>GCP</span><span>Docker</span>
+            <span>Kubernetes</span><span>Jenkins</span><span>CI/CD</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="powerbars reveal">
+        <div class="powerbar">
+          <div class="powerbar__top"><span>Backend &amp; APIs</span><span>96%</span></div>
+          <div class="powerbar__track"><i style="--w:96%"></i></div>
+        </div>
+        <div class="powerbar">
+          <div class="powerbar__top"><span>System Design &amp; Scaling</span><span>92%</span></div>
+          <div class="powerbar__track"><i style="--w:92%"></i></div>
+        </div>
+        <div class="powerbar">
+          <div class="powerbar__top"><span>Performance Optimization</span><span>94%</span></div>
+          <div class="powerbar__track"><i style="--w:94%"></i></div>
+        </div>
+        <div class="powerbar">
+          <div class="powerbar__top"><span>Cloud &amp; DevOps</span><span>88%</span></div>
+          <div class="powerbar__track"><i style="--w:88%"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section" id="experience">
+      <div class="section__head reveal">
+        <span class="section__jp">経験</span>
+        <h2 class="section__title"><span class="section__no">03</span> Journey</h2>
+        <div class="section__line"></div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline__spine"></div>
+
+        <article class="tl-item reveal">
+          <div class="tl-node"></div>
+          <div class="tl-card" data-cursor>
+            <span class="tl-date">Dec 2021 — Present</span>
+            <h3 class="tl-role">Senior Full Stack Engineer</h3>
+            <p class="tl-company">RotoBaller <i>· New York</i></p>
+            <ul>
+              <li>Designed a scalable NFL ranking platform used by thousands of fantasy
+                sports users — <b>+60% engagement</b>.</li>
+              <li>Cut API latency <b>40%</b> via SQL tuning, Redis caching and refactored
+                ranking services.</li>
+              <li>Built real-time REST APIs for live ranking updates and sports data
+                integrations.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl-item reveal">
+          <div class="tl-node"></div>
+          <div class="tl-card" data-cursor>
+            <span class="tl-date">Jan 2023 — Dec 2024</span>
+            <h3 class="tl-role">Senior Full Stack Engineer</h3>
+            <p class="tl-company">Menuhat <i>· Riyadh</i></p>
+            <ul>
+              <li>Built backend services for a food-ordering platform handling
+                <b>10k+ concurrent users</b>.</li>
+              <li>Reduced page load times <b>70%</b> through query optimization, caching
+                and AWS infrastructure work.</li>
+              <li>Shipped Node.js + Docker microservices and analytics dashboards
+                (<b>-30% support queries</b>).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl-item reveal">
+          <div class="tl-node"></div>
+          <div class="tl-card" data-cursor>
+            <span class="tl-date">Feb 2022 — Jan 2023</span>
+            <h3 class="tl-role">Senior Full Stack Engineer</h3>
+            <p class="tl-company">Klik <i>· North Carolina</i></p>
+            <ul>
+              <li>Developed a scalable event-management platform for ticket browsing and
+                booking.</li>
+              <li>Improved booking performance <b>25%</b> via API and database
+                optimization.</li>
+              <li>Integrated secure payment gateways — <b>+20% successful
+                transactions</b>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl-item reveal">
+          <div class="tl-node"></div>
+          <div class="tl-card" data-cursor>
+            <span class="tl-date">Oct 2021 — Feb 2022</span>
+            <h3 class="tl-role">Senior Full Stack Engineer</h3>
+            <p class="tl-company">The Cube <i>· Athens</i></p>
+            <ul>
+              <li>Designed and delivered the <em>Recruitscape</em> recruitment platform.</li>
+              <li>Automated hiring workflows — <b>-35% manual HR operations</b>.</li>
+              <li>Built WebRTC + Firebase video interviews with <b>99.9% uptime</b>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl-item reveal">
+          <div class="tl-node"></div>
+          <div class="tl-card" data-cursor>
+            <span class="tl-date">Jan 2021 — Oct 2021</span>
+            <h3 class="tl-role">Mid-Senior Full Stack Engineer</h3>
+            <p class="tl-company">For All <i>· Riyadh</i></p>
+            <ul>
+              <li>Architected backend infrastructure for a multi-service super app.</li>
+              <li>Improved API response times <b>30%</b> via caching and query
+                optimization.</li>
+              <li>Integrated secure payments — <b>+50% transaction success</b>,
+                99.8% uptime.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl-item reveal">
+          <div class="tl-node"></div>
+          <div class="tl-card" data-cursor>
+            <span class="tl-date">Aug 2017 — Jan 2021</span>
+            <h3 class="tl-role">Full Stack Engineer</h3>
+            <p class="tl-company">Malexs <i>· Alexandria</i></p>
+            <ul>
+              <li>Built web &amp; mobile apps for healthcare, e-commerce and service
+                industries.</li>
+              <li>Delivered RESTful APIs and cross-platform apps with Ionic &amp;
+                Flutter.</li>
+              <li>Shipped production systems: Medical One Clinic, HNAcare, Fosol,
+                Boxaqra, Mahal &amp; more.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+      <div class="section__head reveal">
+        <span class="section__jp">プロジェクト</span>
+        <h2 class="section__title"><span class="section__no">04</span> Projects</h2>
+        <div class="section__line"></div>
+      </div>
+
+      <div class="projects">
+        <a class="proj reveal" href="https://github.com/taha-yasin-saad/nestjs-redis-microservices" target="_blank" rel="noopener" data-cursor>
+          <div class="proj__top">
+            <span class="proj__lang"><i class="dot dot--ts"></i>TypeScript</span>
+            <span class="proj__arrow">↗</span>
+          </div>
+          <h3 class="proj__name">NestJS Redis Microservices</h3>
+          <p class="proj__desc">
+            Distributed microservices architecture built with NestJS and Redis as the
+            message broker — service decoupling done right.
+          </p>
+          <div class="proj__tags"><span>NestJS</span><span>Redis</span><span>Microservices</span></div>
+        </a>
+
+        <a class="proj reveal" href="https://github.com/taha-yasin-saad/jeddah-traffic-dataset" target="_blank" rel="noopener" data-cursor>
+          <div class="proj__top">
+            <span class="proj__lang"><i class="dot dot--py"></i>Python</span>
+            <span class="proj__arrow">↗</span>
+          </div>
+          <h3 class="proj__name">Jeddah Traffic ML Dashboard</h3>
+          <p class="proj__desc">
+            2024 daily traffic dataset calibrated to official GASTAT &amp; KAPSARC
+            statistics, with a Streamlit ML dashboard (Decision Tree + K-Means).
+          </p>
+          <div class="proj__tags"><span>Streamlit</span><span>Scikit-learn</span><span>Data</span></div>
+        </a>
+
+        <a class="proj reveal" href="https://github.com/taha-yasin-saad/facial-recognition-attendance" target="_blank" rel="noopener" data-cursor>
+          <div class="proj__top">
+            <span class="proj__lang"><i class="dot dot--py"></i>Python</span>
+            <span class="proj__arrow">↗</span>
+          </div>
+          <h3 class="proj__name">Facial Recognition Attendance</h3>
+          <p class="proj__desc">
+            Computer-vision attendance system that identifies people from a camera feed
+            and logs presence automatically.
+          </p>
+          <div class="proj__tags"><span>OpenCV</span><span>Computer Vision</span><span>AI</span></div>
+        </a>
+
+        <a class="proj reveal" href="https://github.com/taha-yasin-saad/Fraud-Detection-Advanced-Data-Mining" target="_blank" rel="noopener" data-cursor>
+          <div class="proj__top">
+            <span class="proj__lang"><i class="dot dot--py"></i>Python</span>
+            <span class="proj__arrow">↗</span>
+          </div>
+          <h3 class="proj__name">Fraud Detection — Data Mining</h3>
+          <p class="proj__desc">
+            Advanced data-mining models for financial fraud detection — feature
+            engineering and classification on imbalanced data.
+          </p>
+          <div class="proj__tags"><span>Pandas</span><span>ML</span><span>Data Mining</span></div>
+        </a>
+
+        <a class="proj reveal" href="https://github.com/taha-yasin-saad/renkings-upgrade-ai" target="_blank" rel="noopener" data-cursor>
+          <div class="proj__top">
+            <span class="proj__lang"><i class="dot dot--js"></i>JavaScript</span>
+            <span class="proj__arrow">↗</span>
+          </div>
+          <h3 class="proj__name">Rankings Engine — AI Upgrade</h3>
+          <p class="proj__desc">
+            AI-enhanced upgrade of a sports ranking engine — smarter scoring logic and
+            faster ranking computations.
+          </p>
+          <div class="proj__tags"><span>JavaScript</span><span>AI</span><span>Sports</span></div>
+        </a>
+
+        <a class="proj reveal" href="https://github.com/taha-yasin-saad/SmartBrain" target="_blank" rel="noopener" data-cursor>
+          <div class="proj__top">
+            <span class="proj__lang"><i class="dot dot--js"></i>React</span>
+            <span class="proj__arrow">↗</span>
+          </div>
+          <h3 class="proj__name">SmartBrain</h3>
+          <p class="proj__desc">
+            React application that detects faces inside any image using a machine-learning
+            vision API — clean, reactive UI.
+          </p>
+          <div class="proj__tags"><span>React</span><span>API</span><span>UI</span></div>
+        </a>
+      </div>
+
+      <a class="projects__all" href="https://github.com/taha-yasin-saad" target="_blank" rel="noopener" data-cursor>
+        Explore all 100+ repositories on GitHub
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact">
+      <div class="section__head reveal">
+        <span class="section__jp">連絡</span>
+        <h2 class="section__title"><span class="section__no">05</span> Contact</h2>
+        <div class="section__line"></div>
+      </div>
+
+      <div class="contact reveal">
+        <div class="contact__text">
+          <h3 class="contact__title">Let's build something<br /><span>that scales.</span></h3>
+          <p class="contact__sub">
+            Got a platform that needs to stay fast under pressure? My inbox is open —
+            whether it's a full-time role, a contract, or just a good engineering
+            conversation.
+          </p>
+        </div>
+        <div class="contact__links">
+          <a href="mailto:taha.yasin.saad@gmail.com" data-cursor>
+            <span class="contact__ico">✉</span>
+            <span class="contact__meta"><b>Email</b>taha.yasin.saad@gmail.com</span>
+            <span class="contact__go">↗</span>
+          </a>
+          <a href="tel:+971547380091" data-cursor>
+            <span class="contact__ico">☎</span>
+            <span class="contact__meta"><b>Phone</b>+971 54 738 0091</span>
+            <span class="contact__go">↗</span>
+          </a>
+          <a href="https://www.linkedin.com/in/taha-kommah-a0085a277" target="_blank" rel="noopener" data-cursor>
+            <span class="contact__ico">in</span>
+            <span class="contact__meta"><b>LinkedIn</b>taha-kommah</span>
+            <span class="contact__go">↗</span>
+          </a>
+          <a href="https://github.com/taha-yasin-saad" target="_blank" rel="noopener" data-cursor>
+            <span class="contact__ico">⌥</span>
+            <span class="contact__meta"><b>GitHub</b>taha-yasin-saad</span>
+            <span class="contact__go">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__brand">TAHA<i>.</i>K</span>
+      <p class="footer__jp">ありがとうございました — Thanks for scrolling</p>
+      <p class="footer__copy">© <span id="year"></span> Taha Kommah · Crafted with code &amp; an anime soul</p>
+    </div>
+  </footer>
+
+  <button class="totop" id="toTop" aria-label="Back to top" data-cursor>▲</button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
