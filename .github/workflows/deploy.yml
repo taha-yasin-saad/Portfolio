@@ -3,7 +3,7 @@ name: Deploy Portfolio to GitHub Pages
 on:
   push:
     branches:
-      - claude/anime-portfolio-site-5aZps
+      - main
   workflow_dispatch:
 
 permissions:
